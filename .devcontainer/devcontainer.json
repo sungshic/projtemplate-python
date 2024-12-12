@@ -2,15 +2,26 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.222.0/containers/python-3-miniconda
 {
 	"name": "Python Environment",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": ".."
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "main_container",
+	//"build": {
+	//	"context": "../",
+	//	"dockerfile": "Dockerfile"
+	//},
+	"workspaceFolder": "/home/${USER}/workspace",
+	"features": {},
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+	],
+	"containerEnv": {
+		//		"DOCKER_HOST": "unix:///var/run/docker.sock"
+		"DOCKER_HOST": "tcp://docker-dind:2375"
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"editorconfig.editorconfig",
-				"github.vscode-pull-request-github",
+				//				"github.vscode-pull-request-github",
 				"ms-azuretools.vscode-docker",
 				"ms-python.python",
 				"ms-python.vscode-pylance",

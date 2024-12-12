@@ -2,26 +2,21 @@
 name = "projtemplate-python"
 version = "0.0.0"
 description = "This is a place for describing your project."
-authors = ["Sunny Park <sunny.park@ucl.ac.uk>"]
-license = "MIT"
+authors = [{{#authors_list}}"{{{.}}}", {{/authors_list}}]
+license = "{{{license}}}"
 readme = "README.md"
-repository = "https://github.com/sungshic/projtemplate-python"
-documentation = "https://projtemplate-python.readthedocs.io"
+repository = "{{{repo_url}}}"
+documentation = "{{{doc_url}}}"
 classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "Natural Language :: English",
-    "Operating System :: OS Independent",
-    "Topic :: Software Development :: Libraries",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.12",
+    {{#classifiers_list}}
+    "{{.}}",
+    {{/classifiers_list}}
 ]
-packages = [
-]
+packages = []
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/sungshic/projtemplate-python/issues"
-"Changelog" = "https://github.com/sungshic/projtemplate-python/blob/main/CHANGELOG.md"
+"Bug Tracker" = "{{{bugtracker_url}}}"
+"Changelog" = "{{{changelog_url}}}"
 
 [tool.poetry.dependencies]
 python = "^3.12"

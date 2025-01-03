@@ -26,7 +26,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.12"
 ipython = "8.29.0"
-matplotlib = "3.9.2"
+matplotlib = "3.10.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"

@@ -1,6 +1,4 @@
-FROM nvidia/cuda:12.6.3-cudnn-runtime-ubuntu24.04
-
-ENV DEBIAN_FRONTEND noninteractive
+FROM nvcr.io/nvidia/pytorch:24.12-py3
 
 # Poetry's configuration:
 ENV POETRY_NO_INTERACTION=1 \
@@ -11,13 +9,14 @@ ENV POETRY_NO_INTERACTION=1 \
 
 # Init repos
 RUN apt-get update
-RUN apt-get install -y -q software-properties-common
+RUN apt-get install -y -q software-properties-common apt-transport-https
 RUN add-apt-repository ppa:deadsnakes/ppa # to support newer python versions
 RUN apt-get update
 
 # Install dev dependencies
-RUN apt-get install -y -q build-essential curl git vim tmux unzip nano x11-xserver-utils
+RUN apt-get install -y -q build-essential gcc dirmngr ca-certificates dkms curl git vim tmux unzip nano x11-xserver-utils
 RUN apt-get install -y python3 python-is-python3 python3-virtualenv python3-pip rsync yq
+
 # Install poetry
 RUN curl -sSL https://install.python-poetry.org -o /tmp/install-poetry.py && python3 /tmp/install-poetry.py && rm /tmp/install-poetry.py
 WORKDIR /workspace
